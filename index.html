@@ -143,9 +143,11 @@
             color: var(--secondary);
         }
         
-        /* Hero Section */
+        /* Hero Section with Mystical Image */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="black"/><defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><radialGradient id="sunGradient" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="white" stop-opacity="0.9"/><stop offset="100%" stop-color="white" stop-opacity="0"/></radialGradient></defs><g fill="white" stroke="white" stroke-width="1"><!-- Central Mandala --><circle cx="600" cy="400" r="120" fill="none" stroke="white" stroke-width="2"/><circle cx="600" cy="400" r="80" fill="none" stroke="white" stroke-width="1.5"/><circle cx="600" cy="400" r="40" fill="none" stroke="white" stroke-width="1"/><!-- Radiating Beams --><g filter="url(%23glow)"><path d="M600,280 L600,200" stroke="white" stroke-width="2"/><path d="M600,520 L600,600" stroke="white" stroke-width="2"/><path d="M720,400 L800,400" stroke="white" stroke-width="2"/><path d="M480,400 L400,400" stroke="white" stroke-width="2"/><path d="M650,320 L710,260" stroke="white" stroke-width="2"/><path d="M550,320 L490,260" stroke="white" stroke-width="2"/><path d="M650,480 L710,540" stroke="white" stroke-width="2"/><path d="M550,480 L490,540" stroke="white" stroke-width="2"/></g><!-- Geometric Patterns --><polygon points="600,340 620,380 580,380" fill="none" stroke="white"/><polygon points="600,460 620,420 580,420" fill="none" stroke="white"/><polygon points="660,400 620,380 620,420" fill="none" stroke="white"/><polygon points="540,400 580,380 580,420" fill="none" stroke="white"/><!-- Forest Silhouettes --><path d="M100,800 L100,500 L80,550 L120,550 L100,500 L140,520 L160,480 L180,530 L200,500 L220,550 L240,520 L260,570 L280,500 L300,600 L100,800" fill="white"/><path d="M1100,800 L1100,550 L1080,600 L1120,600 L1100,550 L1140,570 L1160,530 L1180,580 L1100,800" fill="white"/><path d="M300,800 L300,600 L280,650 L320,650 L300,600 L340,620 L360,580 L380,630 L400,600 L420,650 L440,620 L460,670 L480,600 L500,700 L300,800" fill="white"/><path d="M900,800 L900,600 L880,650 L920,650 L900,600 L940,620 L960,580 L980,630 L1000,600 L1020,650 L1040,620 L1060,670 L1080,600 L900,800" fill="white"/><!-- Reflective Path --><path d="M600,800 L600,500 C600,450 650,400 700,400 C750,400 800,450 800,500 L800,800" fill="none" stroke="white" stroke-width="3" opacity="0.7"/><!-- Celestial Elements --><circle cx="200" cy="150" r="15" fill="white"/><circle cx="1000" cy="200" r="10" fill="white"/><circle cx="150" cy="300" r="8" fill="white"/><circle cx="1050" cy="100" r="12" fill="white"/><circle cx="300" cy="100" r="6" fill="white"/><!-- Hand from Clouds --><path d="M900,300 C880,280 860,290 850,300 C840,310 830,320 820,330 C830,340 840,350 850,360 C860,370 870,380 880,390 C890,400 900,410 910,420 C920,410 930,400 940,390 C950,380 960,370 970,360 C980,350 990,340 1000,330 C990,320 980,310 970,300 C960,290 940,280 920,300 Z" fill="white" opacity="0.9"/><!-- Cloud Patterns --><path d="M850,250 C830,240 810,250 800,260 C790,270 780,280 770,290 C780,300 790,310 800,320 C810,330 820,340 830,350 C840,360 850,370 860,380 C870,370 880,360 890,350 C900,340 910,330 920,320 C930,310 940,300 950,290 C940,280 930,270 920,260 C910,250 880,240 860,250 Z" fill="white" opacity="0.7"/></g></svg>');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -169,6 +171,7 @@
             letter-spacing: 2px;
             font-weight: 800;
             text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
         }
         
         .hero h2 {
@@ -177,6 +180,7 @@
             font-weight: 400;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
         }
         
         .hero p {
@@ -185,6 +189,7 @@
             margin: 0 auto 50px;
             color: var(--text-light);
             font-weight: 400;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
         }
         
         .btn {
@@ -677,7 +682,7 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Mystical Image -->
     <section class="hero" id="home">
         <div class="container hero-content">
             <h1>TEDx Silveroaks Int School 2025</h1>
