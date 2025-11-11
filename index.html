@@ -50,6 +50,114 @@
             padding: 0 15px;
         }
         
+        /* Year Selection Popup */
+        .year-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .year-popup.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .year-selection {
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--primary);
+            position: relative;
+            animation: popup-appear 0.5s ease-out;
+        }
+        
+        @keyframes popup-appear {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .year-selection h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .year-selection p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .year-options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .year-option {
+            background: var(--gradient);
+            border-radius: 10px;
+            padding: 30px 20px;
+            flex: 1;
+            max-width: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 20px rgba(230, 46, 46, 0.2);
+        }
+        
+        .year-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(230, 46, 46, 0.4);
+            border-color: var(--secondary);
+        }
+        
+        .year-option h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .year-option p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .year-note {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-top: 20px;
+        }
+        
         /* Header & Navigation */
         header {
             background-color: rgba(0, 0, 0, 0.9);
@@ -707,6 +815,16 @@
             .timeline-time {
                 flex: 0 0 120px;
             }
+            
+            .year-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .year-option {
+                max-width: 300px;
+                width: 100%;
+            }
         }
         
         @media (max-width: 768px) {
@@ -772,6 +890,14 @@
             .footer-links-column {
                 flex: 0 0 100%;
             }
+            
+            .year-selection {
+                padding: 30px 20px;
+            }
+            
+            .year-selection h2 {
+                font-size: 2rem;
+            }
         }
         
         @media (max-width: 576px) {
@@ -803,6 +929,25 @@
     </style>
 </head>
 <body>
+    <!-- Year Selection Popup -->
+    <div class="year-popup" id="yearPopup">
+        <div class="year-selection">
+            <h2>Welcome to TEDx Silveroaks</h2>
+            <p>Please select which year's content you would like to explore:</p>
+            <div class="year-options">
+                <div class="year-option" id="year1">
+                    <h3>Year 1</h3>
+                    <p>Explore our inaugural event with groundbreaking talks and inspiring ideas</p>
+                </div>
+                <div class="year-option" id="year2">
+                    <h3>Year 2</h3>
+                    <p>Discover our latest event with new perspectives and thought-provoking discussions</p>
+                </div>
+            </div>
+            <p class="year-note">You can change this selection later from the navigation menu</p>
+        </div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -819,6 +964,7 @@
                     <li><a href="#schedule">Schedule</a></li>
                     <li><a href="#partners">Partners</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="changeYear">Change Year</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu" id="mobile-menu">☰</div>
@@ -993,110 +1139,4 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Us</h2>
-                <p>Get in touch for tickets, partnerships, or any questions</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <div class="contact-details">
-                        <p><i class="fas fa-map-marker-alt"></i> Silver Oaks International School, Bachupally, Hyderabad</p>
-                        <p><i class="fas fa-envelope"></i> contact@tedxsilveroaksintschoolbachupally.com</p>
-                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
-                        <p><i class="fas fa-clock"></i> December 20, 2025 | 9:00 AM - 4:00 PM</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <div class="logo">
-                        <div class="logo-main">TEDx</div>
-                        <div class="logo-sub">Silver Oaks Intl School</div>
-                        <div class="logo-sub">Bachupally</div>
-                    </div>
-                    <p>This independent TEDx event is operated under license from TED. Join us as we explore ideas worth spreading in our community.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-links-column">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#mission">Mission</a></li>
-                            <li><a href="#about">Theme</a></li>
-                            <li><a href="#schedule">Schedule</a></li>
-                            <li><a href="#partners">Partners</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-column">
-                        <h3>Resources</h3>
-                        <ul>
-                            <li><a href="#contact">Contact</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 TEDxSilverOaksIntSchoolBachupally. This independent TEDx event is operated under license from TED.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu').addEventListener('click', function() {
-            const navMenu = document.getElementById('nav-menu');
-            navMenu.classList.toggle('show');
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu after clicking a link
-                    if (window.innerWidth <= 768) {
-                        document.getElementById
+                <h2>Contact
