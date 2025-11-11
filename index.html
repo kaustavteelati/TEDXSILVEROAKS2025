@@ -1,4 +1,4 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -221,8 +221,8 @@
             background: var(--primary);
         }
         
-        /* About TED Section */
-        .about-ted {
+        /* Mission Section */
+        .mission {
             padding: 120px 0;
             background-color: var(--light);
         }
@@ -260,6 +260,64 @@
             font-size: 1.1rem;
             color: var(--text-light);
             font-weight: 400;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .mission-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .mission-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        /* About TED Section */
+        .about-ted {
+            padding: 120px 0;
+            background-color: var(--dark);
         }
         
         .about-content {
@@ -303,7 +361,7 @@
         
         /* TEDx Explanation */
         .tedx-explanation {
-            background-color: var(--dark);
+            background-color: var(--light);
             padding: 80px 0;
             text-align: center;
         }
@@ -609,6 +667,7 @@
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#mission">Purpose & Impact</a></li>
                     <li><a href="#about-ted">About TED</a></li>
                     <li><a href="#theme">Theme</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -624,8 +683,34 @@
             <h1>TEDx Silveroaks Int School 2025</h1>
             <h2>Maya: Illusions in Daily Life</h2>
             <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
-            <a href="#about-ted" class="btn">About TED</a>
+            <a href="#mission" class="btn">Purpose & Impact</a>
             <a href="#theme" class="btn btn-outline">Event Theme</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Purpose & Impact</h2>
+                <p>Discover what drives TEDx and the difference it makes</p>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Purpose</h3>
+                    <p>The purpose of TEDx, created in the spirit of TED's overall mission to discover "ideas worth spreading", is to connect bright minds and accomplished individuals to inspire the next generation of thinkers. TEDx is organised locally by passionate individuals to bring local voices forward. These events are branded TEDx, where x = independently organised TED event.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Impact</h3>
+                    <p>TEDx has always been more than just a platform for speeches; it is a space for connection, inspiration and transformation. By convening speakers from various fields, TEDx creates a global forum that puts forth various perspectives on ideas that matter. Moreover, it gives curious young minds an opportunity to interact and learn from leaders in the community.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -670,7 +755,8 @@
             <div class="theme-content">
                 <div class="theme-text">
                     <h3>Maya: The Illusions in Daily Life</h3>
-                    <p>The ancient Sanskrit word "Maya" often translates to "illusion," but it signifies more than mere trickery. It represents the powerful, enchanting force that constructs our perceived reality—the veil that separates us from a fundamental truth.</p>
+                    <p>We live in a world that constantly blurs the line between what is real and what only seems real. Maya, drawn from Indian philosophy, explores this very illusion: the deception and magic woven into our everyday lives. From the stories we read and the media we consume, to the technology that shapes our reality, illusion surrounds us.</p>
+                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
                     <p>In this edition of TEDxSilverOaksIntSchoolBachupally, we deconstruct the 'Maya' of the 21st century:</p>
                     <ul>
                         <li><strong>The Illusion of Self:</strong> Are our personalities fixed, or fluid constructs?</li>
@@ -678,7 +764,6 @@
                         <li><strong>The Illusion of Connection:</strong> Is social media bringing us together or building walls?</li>
                         <li><strong>The Illusion of Certainty:</strong> In a complex world, why do we crave simple answers?</li>
                     </ul>
-                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
                     <a href="#contact" class="btn">Get Involved</a>
                 </div>
                 <div class="theme-image">
@@ -711,6 +796,7 @@
                         <h3>Quick Links</h3>
                         <ul>
                             <li><a href="#home">Home</a></li>
+                            <li><a href="#mission">Purpose & Impact</a></li>
                             <li><a href="#about-ted">About TED</a></li>
                             <li><a href="#theme">Theme</a></li>
                             <li><a href="#contact">Contact</a></li>
