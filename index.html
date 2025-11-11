@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEDx Silveroaks - Year Selection</title>
+    <title>TEDx Silveroaks International School</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,240 +24,763 @@
             box-sizing: border-box;
         }
         
-        html, body {
-            height: 100%;
-            overflow: hidden;
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
             font-family: 'Montserrat', sans-serif;
             color: var(--secondary);
             background-color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-weight: 400;
         }
         
-        /* Year Selection Popup */
-        .year-popup {
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(230, 46, 46, 0.2);
+        }
+        
+        header.scrolled {
             background-color: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            padding: 20px;
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            line-height: 1.2;
         }
         
-        .year-popup.hidden {
-            opacity: 0;
-            transform: translateY(-100%);
-            pointer-events: none;
-        }
-        
-        .year-selection {
-            text-align: center;
-            width: 100%;
-            max-width: 1200px;
-        }
-        
-        .year-selection h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
+        .logo-main {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
             font-weight: 800;
-            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+        
+        .logo-sub {
+            font-size: 11px;
+            color: var(--secondary);
+            font-weight: 600;
             letter-spacing: 3px;
+            text-transform: uppercase;
         }
         
-        .year-selection p {
-            font-size: 1.3rem;
-            margin-bottom: 60px;
-            color: var(--text-light);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Year Options */
-        .year-options {
+        nav ul {
             display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            list-style: none;
         }
         
-        .year-option {
-            background: var(--gradient);
-            border-radius: 20px;
-            padding: 50px 30px;
-            width: 400px;
+        nav ul li {
+            margin-left: 35px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            border: 3px solid transparent;
-            box-shadow: 0 15px 30px rgba(230, 46, 46, 0.2);
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--secondary);
+            padding: 200px 0 150px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        .year-option:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(230, 46, 46, 0.4);
-            border-color: var(--secondary);
-        }
-        
-        .year-option h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        
-        .year-option p {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .year-icon {
-            font-size: 4rem;
-            margin-bottom: 25px;
-            color: var(--secondary);
-        }
-        
-        .year-note {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-style: italic;
-            margin-top: 30px;
-        }
-        
-        /* Main Website Content */
-        .main-content {
-            display: none;
-            padding: 100px 20px 20px;
-            text-align: center;
-            max-width: 800px;
+        .hero-content {
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
-        .main-content h1 {
-            font-size: 3rem;
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            color: var(--primary);
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-transform: uppercase;
         }
         
-        .main-content p {
-            font-size: 1.2rem;
+        .hero h2 {
+            font-size: 1.8rem;
             margin-bottom: 30px;
+            font-weight: 400;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
             color: var(--text-light);
+            font-weight: 400;
         }
         
         .btn {
             display: inline-block;
-            padding: 15px 40px;
+            padding: 15px 35px;
             background: var(--gradient);
             color: var(--secondary);
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 14px;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(230, 46, 46, 0.3);
+            box-shadow: 0 5px 15px rgba(230, 46, 46, 0.3);
             letter-spacing: 1px;
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
         }
         
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(230, 46, 46, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 46, 46, 0.4);
         }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            .year-option {
-                width: 90%;
-                padding: 30px 20px;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--secondary);
+            margin-left: 20px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+        }
+        
+        /* History Section */
+        .history {
+            padding: 120px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 400;
+        }
+        
+        .history-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .history-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            background: var(--gradient);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--accent);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 40px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 40px;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 0 5px rgba(230, 46, 46, 0.2);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -50px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -50px;
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 120px 0;
+            background-color: var(--dark);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--accent);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--secondary);
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--accent);
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        
+        .footer-about {
+            flex: 1;
+            margin-right: 40px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-links-column h3 {
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links-column ul {
+            list-style: none;
+        }
+        
+        .footer-links-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .footer-links-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--accent);
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 400;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            margin-right: 15px;
+            color: var(--secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
             }
             
-            .year-selection h1 {
-                font-size: 2.5rem;
+            .footer-container {
+                flex-direction: column;
+            }
+            
+            .footer-about {
+                margin-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .footer-links {
+                flex-wrap: wrap;
+            }
+            
+            .footer-links-column {
+                flex: 0 0 50%;
+                margin-bottom: 30px;
+            }
+            
+            .history-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-item .timeline-content {
+                margin-left: 80px !important;
+                margin-right: 0 !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -50px;
+                right: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+                border-top: 1px solid var(--accent);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 150px 0 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-links-column {
+                flex: 0 0 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 12px;
+            }
+            
+            .logo-main {
+                font-size: 22px;
+            }
+            
+            .logo-sub {
+                font-size: 9px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Year Selection Popup -->
-    <div class="year-popup" id="yearPopup">
-        <div class="year-selection">
-            <h1>Welcome to TEDx Silveroaks</h1>
-            <p>Select which year's content you'd like to explore</p>
-            
-            <div class="year-options">
-                <div class="year-option" id="year2024">
-                    <div class="year-icon">
-                        <i class="fas fa-seedling"></i>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-main">TEDx</div>
+                <div class="logo-sub">Silver Oaks Intl School</div>
+                <div class="logo-sub">Bachupally</div>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu" id="mobile-menu">☰</div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>TEDx Silveroaks Int School 2025</h1>
+            <h2>Maya: Illusions in Daily Life</h2>
+            <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
+            <a href="#history" class="btn">Our History</a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history" id="history">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our History</h2>
+                <p>Discover the journey of TEDxSilveroaks through the years</p>
+            </div>
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h3>The Beginning</h3>
+                        <p>TEDxSilveroaks was born from a vision to create a platform for sharing innovative ideas within our school community. A dedicated team of students and faculty came together to organize our first independent TEDx event.</p>
                     </div>
-                    <h3>2024 Edition</h3>
-                    <p>Our inaugural event with groundbreaking talks and inspiring ideas</p>
                 </div>
-                
-                <div class="year-option" id="year2025">
-                    <div class="year-icon">
-                        <i class="fas fa-rocket"></i>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h3>First Official Event</h3>
+                        <p>Our inaugural TEDxSilveroaks event took place with the theme "Breaking Barriers". We featured 8 inspiring speakers from various fields who shared their perspectives on overcoming limitations and pushing boundaries.</p>
                     </div>
-                    <h3>2025 Edition</h3>
-                    <p>Our latest event with new perspectives on Maya: Illusions in Daily Life</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <h3>Expanding Horizons</h3>
+                        <p>This year, we explore "Maya: Illusions in Daily Life", delving into the concept of perception versus reality in our modern world. Our event has grown to include workshops, interactive sessions, and a diverse lineup of thought leaders.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">Future</div>
+                        <h3>Continuing the Legacy</h3>
+                        <p>We aim to continue fostering a culture of curiosity and innovation, bringing together bright minds to share ideas that inspire positive change in our community and beyond.</p>
+                    </div>
                 </div>
             </div>
-            
-            <p class="year-note">You can change your selection later from the navigation menu</p>
         </div>
-    </div>
+    </section>
 
-    <!-- Main Website Content -->
-    <div class="main-content" id="mainContent">
-        <h1>TEDx Silveroaks International School</h1>
-        <p>Welcome to our website! You selected: <span id="selectedYear">2025</span></p>
-        <p>This is the main content of the TEDx Silveroaks website.</p>
-        <button class="btn" id="backBtn">Back to Year Selection</button>
-    </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About TEDxSilveroaks</h2>
+                <p>Learn more about our mission and impact</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Purpose</h3>
+                    <p>TEDxSilveroaks International School Bachupally is a student-led initiative that brings the spirit of TED's mission to discover "ideas worth spreading" to our local community.</p>
+                    <p>We believe in the power of ideas to change attitudes, lives, and ultimately, the world. Our independently organized TEDx events aim to create a platform where thinkers and doers can share insights that spark deep discussion and connection.</p>
+                    <p>Through our events, we strive to inspire curiosity, foster innovation, and build a community of lifelong learners who are passionate about making a positive impact.</p>
+                    <a href="#contact" class="btn">Get Involved</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="TEDx Event">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-main">TEDx</div>
+                        <div class="logo-sub">Silver Oaks Intl School</div>
+                        <div class="logo-sub">Bachupally</div>
+                    </div>
+                    <p>This independent TEDx event is operated under license from TED. Join us as we explore ideas worth spreading in our community.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#history">History</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#">Past Events</a></li>
+                            <li><a href="#">Speaker Profiles</a></li>
+                            <li><a href="#">Photo Gallery</a></li>
+                            <li><a href="#">Get Involved</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TEDxSilverOaksIntSchoolBachupally. This independent TEDx event is operated under license from TED.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Simple working implementation
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearPopup = document.getElementById('yearPopup');
-            const mainContent = document.getElementById('mainContent');
-            const selectedYearSpan = document.getElementById('selectedYear');
-            const backBtn = document.getElementById('backBtn');
-            
-            // Year 2024 selection
-            document.getElementById('year2024').addEventListener('click', function() {
-                selectedYearSpan.textContent = '2024';
-                yearPopup.classList.add('hidden');
-                setTimeout(() => {
-                    mainContent.style.display = 'block';
-                }, 800);
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('nav-menu').classList.remove('show');
+                    }
+                }
             });
-            
-            // Year 2025 selection
-            document.getElementById('year2025').addEventListener('click', function() {
-                selectedYearSpan.textContent = '2025';
-                yearPopup.classList.add('hidden');
-                setTimeout(() => {
-                    mainContent.style.display = 'block';
-                }, 800);
-            });
-            
-            // Back button
-            backBtn.addEventListener('click', function() {
-                mainContent.style.display = 'none';
-                yearPopup.classList.remove('hidden');
-            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (window.innerWidth <= 768 && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+                document.getElementById('nav-menu').classList.remove('show');
+            }
         });
     </script>
 </body>
