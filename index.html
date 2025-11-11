@@ -221,10 +221,68 @@
             background: var(--primary);
         }
         
+        /* Mission Section */
+        .mission {
+            padding: 120px 0;
+            background-color: var(--light);
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .mission-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .mission-card p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
         /* About Section */
         .about {
             padding: 120px 0;
-            background-color: var(--light);
+            background-color: var(--dark);
         }
         
         .section-title {
@@ -756,7 +814,8 @@
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#about">Theme</a></li>
                     <li><a href="#schedule">Schedule</a></li>
                     <li><a href="#partners">Partners</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -773,7 +832,40 @@
             <h2>Maya: Illusions in Daily Life</h2>
             <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
             <a href="#contact" class="btn">Get Tickets</a>
-            <a href="#about" class="btn btn-outline">Learn More</a>
+            <a href="#mission" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Mission & Impact</h2>
+                <p>Discover the purpose behind TEDx and the impact we aim to create</p>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Purpose</h3>
+                    <p>The purpose of TEDx, created in the spirit of TED's overall mission to discover "ideas worth spreading", is to connect bright minds and accomplished individuals to inspire the next generation of thinkers. TEDx is organised locally by passionate individuals to bring local voices forward. These events are branded TEDx, where x = independently organised TED event.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Impact</h3>
+                    <p>TEDx has always been more than just a platform for speeches; it is a space for connection, inspiration and transformation. By convening speakers from various fields, TEDx creates a global forum that puts forth various perspectives on ideas that matter. Moreover, it gives curious young minds an opportunity to interact and learn from leaders in the community.</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Theme</h3>
+                    <p>We live in a world that constantly blurs the line between what is real and what only seems real. Maya, drawn from Indian philosophy, explores this very illusion: the deception and magic woven into our everyday lives. From the stories we read and the media we consume, to the technology that shapes our reality, illusion surrounds us.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -781,8 +873,8 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2>About The Event</h2>
-                <p>Join us for a day of inspiring talks, thought-provoking discussions, and meaningful connections.</p>
+                <h2>About The Theme</h2>
+                <p>Delve deeper into the concept of Maya and its relevance to our modern lives</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
@@ -795,7 +887,7 @@
                         <li><strong>The Illusion of Connection:</strong> Is social media bringing us together or building walls?</li>
                         <li><strong>The Illusion of Certainty:</strong> In a complex world, why do we crave simple answers?</li>
                     </ul>
-                    <p>This is a journey from perception to perspective. Join us.</p>
+                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
                     <a href="#contact" class="btn">Register Now</a>
                 </div>
                 <div class="about-image">
@@ -962,7 +1054,8 @@
                         <h3>Quick Links</h3>
                         <ul>
                             <li><a href="#home">Home</a></li>
-                            <li><a href="#about">About</a></li>
+                            <li><a href="#mission">Mission</a></li>
+                            <li><a href="#about">Theme</a></li>
                             <li><a href="#schedule">Schedule</a></li>
                             <li><a href="#partners">Partners</a></li>
                         </ul>
@@ -1006,55 +1099,4 @@
                     
                     // Close mobile menu after clicking a link
                     if (window.innerWidth <= 768) {
-                        document.getElementById('nav-menu').classList.remove('show');
-                    }
-                }
-            });
-        });
-        
-        // Smooth scrolling for buttons
-        document.querySelectorAll('.btn').forEach(button => {
-            if (button.getAttribute('href') && button.getAttribute('href').startsWith('#')) {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            }
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
-            this.reset();
-        });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const nav = document.querySelector('nav');
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (window.innerWidth <= 768 && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
-                document.getElementById('nav-menu').classList.remove('show');
-            }
-        });
-    </script>
-</body>
-</html>
+                        document.getElementById
