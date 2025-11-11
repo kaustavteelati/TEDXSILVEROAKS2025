@@ -256,6 +256,27 @@
             margin-right: auto;
         }
         
+        /* Main Website Content (Hidden Initially) */
+        .main-content {
+            display: none;
+            padding: 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .main-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .main-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+        
         /* Responsive Styles */
         @media (max-width: 992px) {
             .carousel {
@@ -370,9 +391,20 @@
         </div>
     </div>
 
+    <!-- Main Website Content -->
+    <div class="main-content" id="mainContent">
+        <h1>TEDx Silveroaks International School</h1>
+        <p>Welcome to our website! This is the main content area that appears after you select a year.</p>
+        <p>You selected: <span id="selectedYear">2025</span></p>
+        <button class="year-btn" id="backToSelection">Back to Year Selection</button>
+    </div>
+
     <script>
         // DOM elements
         const yearPopup = document.getElementById('yearPopup');
+        const mainContent = document.getElementById('mainContent');
+        const selectedYearSpan = document.getElementById('selectedYear');
+        const backToSelectionBtn = document.getElementById('backToSelection');
         const carousel = document.getElementById('carousel');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
@@ -413,17 +445,25 @@
         
         // Handle year selection
         function handleYearSelection(year) {
-            if (year === '2024') {
-                // Redirect to 2024 website
-                window.location.href = "tedx-2024.html";
-            } else if (year === '2025') {
-                // Slide away the popup for 2025
-                yearPopup.classList.add('hidden');
-                // In a real implementation, you would show the main website content here
-                setTimeout(() => {
-                    alert("Welcome to the 2025 TEDx Silveroaks website!");
-                }, 800);
-            }
+            // Update the selected year display
+            selectedYearSpan.textContent = year;
+            
+            // Slide away the popup
+            yearPopup.classList.add('hidden');
+            
+            // Show the main content after a delay
+            setTimeout(() => {
+                mainContent.style.display = 'block';
+            }, 800);
+        }
+        
+        // Go back to year selection
+        function backToSelection() {
+            // Hide main content
+            mainContent.style.display = 'none';
+            
+            // Show the popup again
+            yearPopup.classList.remove('hidden');
         }
         
         // Event listeners
@@ -443,6 +483,8 @@
                 handleYearSelection(year);
             });
         });
+        
+        backToSelectionBtn.addEventListener('click', backToSelection);
         
         // Auto-advance carousel (optional)
         let carouselInterval = setInterval(nextSlide, 5000);
