@@ -16,7 +16,6 @@
             --accent: #333333;
             --text-light: #cccccc;
             --gradient: linear-gradient(135deg, #e62e2e 0%, #cc0000 100%);
-            --purple-hue: rgba(128, 0, 128, 0.1);
         }
         
         * {
@@ -310,285 +309,6 @@
             transform: scale(1.05);
         }
         
-        /* Purpose & Impact Section */
-        .purpose-impact {
-            padding: 120px 0;
-            background-color: var(--dark);
-            position: relative;
-        }
-        
-        .purpose-impact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(230, 46, 46, 0.1) 0%, transparent 50%);
-        }
-        
-        .purpose-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-        
-        .purpose-card {
-            background: linear-gradient(145deg, #1a1a1a, #222222);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-        
-        .purpose-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .purpose-card h3 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-        
-        .purpose-card p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        /* Modern Maya Experience Section */
-        .modern-maya {
-            padding: 120px 0;
-            background-color: var(--light);
-            position: relative;
-        }
-        
-        .modern-maya-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        
-        .modern-maya-text {
-            flex: 1;
-        }
-        
-        .modern-maya-text h2 {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 30px;
-        }
-        
-        .modern-maya-text p {
-            color: var(--text-light);
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-        
-        .modern-maya-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-        
-        .modern-maya-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Speakers Section */
-        .speakers {
-            padding: 120px 0;
-            background-color: var(--dark);
-        }
-        
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-        
-        .speaker-card {
-            background: linear-gradient(145deg, #1a1a1a, #222222);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .speaker-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(230, 46, 46, 0.2);
-        }
-        
-        .speaker-image {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .speaker-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .speaker-card:hover .speaker-image img {
-            transform: scale(1.1);
-        }
-        
-        .speaker-info {
-            padding: 30px;
-        }
-        
-        .speaker-info h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-        
-        .speaker-info p {
-            color: var(--text-light);
-            margin-bottom: 15px;
-        }
-        
-        /* History Section */
-        .history {
-            padding: 120px 0;
-            background-color: var(--light);
-        }
-        
-        .history-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid var(--accent);
-        }
-        
-        .history-tab {
-            padding: 15px 35px;
-            background: transparent;
-            border: none;
-            color: var(--text-light);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .history-tab.active {
-            color: var(--primary);
-        }
-        
-        .history-tab.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary);
-        }
-        
-        .history-tab:hover {
-            color: var(--primary);
-        }
-        
-        .history-content {
-            display: none;
-        }
-        
-        .history-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .year-highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .highlight-card {
-            background: linear-gradient(145deg, #1a1a1a, #222222);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .highlight-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .highlight-card h4 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .highlight-card p {
-            color: var(--text-light);
-        }
-        
-        /* TEDx Info Section */
-        .tedx-info {
-            padding: 120px 0;
-            background-color: var(--dark);
-        }
-        
-        .info-box {
-            background: linear-gradient(145deg, #1a1a1a, #222222);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 40px;
-            position: relative;
-        }
-        
-        .info-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-            border-radius: 15px 15px 0 0;
-        }
-        
-        .info-box h3 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-        
-        .info-box p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
         /* Schedule Section */
         .schedule {
             padding: 120px 0;
@@ -869,11 +589,7 @@
         }
         
         @media (max-width: 992px) {
-            .about-content, .modern-maya-content {
-                flex-direction: column;
-            }
-            
-            .contact-container {
+            .about-content, .contact-container {
                 flex-direction: column;
             }
             
@@ -916,6 +632,10 @@
                 padding: 20px;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
                 border-top: 1px solid var(--accent);
+            }
+            
+            nav ul.show {
+                display: flex;
             }
             
             nav ul li {
@@ -963,16 +683,6 @@
             .footer-links-column {
                 flex: 0 0 100%;
             }
-            
-            .history-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .history-tab {
-                width: 100%;
-                text-align: center;
-            }
         }
         
         @media (max-width: 576px) {
@@ -1005,20 +715,15 @@
                 <div class="logo-sub">Bachupally</div>
             </div>
             <nav>
-                <ul>
+                <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#purpose">Purpose & Impact</a></li>
-                    <li><a href="#modern-maya">Theme</a></li>
-                    <li><a href="#speakers">Speakers</a></li>
-                    <li><a href="#history">History</a></li>
-                    <li><a href="#tedx">About TEDx</a></li>
                     <li><a href="#schedule">Schedule</a></li>
                     <li><a href="#partners">Partners</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu">☰</div>
+            <div class="mobile-menu" id="mobile-menu">☰</div>
         </div>
     </header>
 
@@ -1028,8 +733,8 @@
             <h1>TEDx Silveroaks Int School 2025</h1>
             <h2>Maya: Illusions in Daily Life</h2>
             <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
-            <a href="#about" class="btn">Learn More</a>
-            <a href="#contact" class="btn btn-outline">Get Tickets</a>
+            <a href="#contact" class="btn">Get Tickets</a>
+            <a href="#about" class="btn btn-outline">Learn More</a>
         </div>
     </section>
 
@@ -1061,82 +766,256 @@
         </div>
     </section>
 
-    <!-- Purpose & Impact Section -->
-    <section class="purpose-impact" id="purpose">
+    <!-- Schedule Section -->
+    <section class="schedule" id="schedule">
         <div class="container">
             <div class="section-title">
-                <h2>Purpose & Impact</h2>
-                <p>Discover the mission behind TEDx and its transformative power</p>
+                <h2>Event Schedule</h2>
+                <p>Plan your day with our detailed schedule of talks and activities</p>
             </div>
-            <div class="purpose-content">
-                <div class="purpose-card">
-                    <h3>Purpose</h3>
-                    <p>The purpose of TEDx, created in the spirit of TED's overall mission to discover "ideas worth spreading", is to connect bright minds and accomplished individuals to inspire the next generation of thinkers. TEDx is organised locally by passionate individuals to bring local voices forward. These events are branded TEDx, where x = independently organised TED event.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 AM - 9:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Registration & Welcome Coffee</h3>
+                        <p>Check-in and network with fellow attendees</p>
+                    </div>
                 </div>
-                <div class="purpose-card">
-                    <h3>Impact</h3>
-                    <p>TEDx has always been more than just a platform for speeches; it is a space for connection, inspiration and transformation. By convening speakers from various fields, TEDx creates a global forum that puts forth various perspectives on ideas that matter. Moreover, it gives curious young minds an opportunity to interact and learn from leaders in the community.</p>
+                <div class="timeline-item">
+                    <div class="timeline-time">9:30 AM - 10:00 AM</div>
+                    <div class="timeline-content">
+                        <h3>Opening Act & Welcome Note</h3>
+                        <p>Kickstarting the event with an inspiring performance</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">10:00 AM - 11:00 AM</div>
+                    <div class="timeline-content">
+                        <h3>Session 1: The Inner Veil</h3>
+                        <p>Exploring the illusions of self and identity</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">11:00 AM - 11:30 AM</div>
+                    <div class="timeline-content">
+                        <h3>Networking Break</h3>
+                        <p>Refreshments and conversations</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">11:30 AM - 12:30 PM</div>
+                    <div class="timeline-content">
+                        <h3>Session 2: The Digital Mirage</h3>
+                        <p>Examining technology's impact on our perception of reality</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">12:30 PM - 1:30 PM</div>
+                    <div class="timeline-content">
+                        <h3>Lunch Break</h3>
+                        <p>Enjoy a curated meal while connecting with speakers</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">1:30 PM - 3:00 PM</div>
+                    <div class="timeline-content">
+                        <h3>Session 3: Beyond the Veil</h3>
+                        <p>Short talks and interactive workshops</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">3:00 PM - 3:30 PM</div>
+                    <div class="timeline-content">
+                        <h3>Closing Remarks & Networking</h3>
+                        <p>Final thoughts and continued conversations</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modern Maya Experience Section -->
-    <section class="modern-maya" id="modern-maya">
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
         <div class="container">
-            <div class="modern-maya-content">
-                <div class="modern-maya-text">
-                    <h2>The Modern Maya Experience</h2>
-                    <p>We live in a world that constantly blurs the line between what is real and what only seems real. Maya, drawn from Indian philosophy, explores this very illusion: the deception and magic woven into our everyday lives. From the stories we read and the media we consume, to the technology that shapes our reality, illusion surrounds us.</p>
-                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
-                    <p>At TEDxSilver Oaks Intl School Bachupally, we believe that every speaker brings with them the potential to shift perspectives and plant ideas that grow into real and impactful initiatives. Presenting the voices and ideas of these beacons of change is what TEDx is truly about.</p>
+            <div class="section-title">
+                <h2>Our Partners</h2>
+                <p>With thanks to our sponsors and community partners</p>
+            </div>
+            <div class="partners-logos">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+1" alt="Partner 1">
                 </div>
-                <div class="modern-maya-image">
-                    <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Modern Maya Experience">
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+2" alt="Partner 2">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+3" alt="Partner 3">
+                </div>
+                <div class="partner-logo">
+                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+4" alt="Partner 4">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Speakers Section -->
-    <section class="speakers" id="speakers">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Our Speakers</h2>
-                <p>Meet the inspiring individuals who shared their ideas at our previous event</p>
+                <h2>Contact Us</h2>
+                <p>Get in touch for tickets, partnerships, or any questions</p>
             </div>
-            <div class="speakers-grid">
-                <div class="speaker-card">
-                    <div class="speaker-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Ashok V.M. Kumar">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Silver Oaks International School, Bachupally, Hyderabad</p>
+                        <p><i class="fas fa-envelope"></i> contact@tedxsilveroaksintschoolbachupally.com</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-clock"></i> December 20, 2025 | 9:00 AM - 4:00 PM</p>
                     </div>
-                    <div class="speaker-info">
-                        <h3>Ashok V.M. Kumar</h3>
-                        <p>Former Naval officer with a distinguished career in the Indian armed forces</p>
-                    </div>
-                </div>
-                <div class="speaker-card">
-                    <div class="speaker-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Devika Bahudhanam">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Devika Bahudhanam</h3>
-                        <p>Filmmaker and executive producer known for exceptional work on films like Iqbal, Dor, and Bahubali</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-                <div class="speaker-card">
-                    <div class="speaker-image">
-                        <img src="https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Brigadier Rajiv Chauhan">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="logo">
+                        <div class="logo-main">TEDx</div>
+                        <div class="logo-sub">Silver Oaks Intl School</div>
+                        <div class="logo-sub">Bachupally</div>
                     </div>
-                    <div class="speaker-info">
-                        <h3>Brigadier Rajiv Chauhan</h3>
-                        <p>Seasoned military leader with commitment to transformation and growth</p>
+                    <p>This independent TEDx event is operated under license from TED. Join us as we explore ideas worth spreading in our community.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#schedule">Schedule</a></li>
+                            <li><a href="#partners">Partners</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Resources</h3>
+                        <ul>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="speaker-card">
-                    <div class="speaker-image">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Revanth Ukkalam">
-                    </div>
-                    <div class="speaker-info">
-                        <h3>Revanth Ukkalam</h3>
-                        <p>Graduate
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TEDxSilverOaksIntSchoolBachupally. This independent TEDx event is operated under license from TED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('show');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth <= 768) {
+                        document.getElementById('nav-menu').classList.remove('show');
+                    }
+                }
+            });
+        });
+        
+        // Smooth scrolling for buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            if (button.getAttribute('href') && button.getAttribute('href').startsWith('#')) {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (window.innerWidth <= 768 && !nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+                document.getElementById('nav-menu').classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
