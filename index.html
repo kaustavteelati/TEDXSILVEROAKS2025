@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -221,8 +221,8 @@
             background: var(--primary);
         }
         
-        /* History Section */
-        .history {
+        /* About TED Section */
+        .about-ted {
             padding: 120px 0;
             background-color: var(--light);
         }
@@ -262,99 +262,11 @@
             font-weight: 400;
         }
         
-        .history-timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .history-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            background: var(--gradient);
-        }
-        
-        .timeline-item {
-            display: flex;
-            margin-bottom: 80px;
-            position: relative;
-        }
-        
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        
-        .timeline-content {
-            flex: 1;
-            padding: 30px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid var(--accent);
-            position: relative;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 40px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 40px;
-        }
-        
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            box-shadow: 0 0 0 5px rgba(230, 46, 46, 0.2);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content::before {
-            right: -50px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content::before {
-            left: -50px;
-        }
-        
-        .timeline-year {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .timeline-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .timeline-content p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 120px 0;
-            background-color: var(--dark);
-        }
-        
         .about-content {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 60px;
+            margin-bottom: 80px;
         }
         
         .about-text {
@@ -384,6 +296,105 @@
         }
         
         .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* TEDx Explanation */
+        .tedx-explanation {
+            background-color: var(--dark);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .tedx-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 60px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tedx-box h3 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            font-weight: 800;
+        }
+        
+        .tedx-box p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        
+        .x-highlight {
+            font-size: 3rem;
+            color: var(--primary);
+            font-weight: 800;
+            display: block;
+            margin: 20px 0;
+        }
+        
+        /* Theme Section */
+        .theme {
+            padding: 120px 0;
+            background-color: var(--light);
+        }
+        
+        .theme-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .theme-text {
+            flex: 1;
+        }
+        
+        .theme-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .theme-text p {
+            margin-bottom: 25px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .theme-text ul {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+        
+        .theme-text ul li {
+            margin-bottom: 12px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+        
+        .theme-text ul li strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .theme-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--accent);
+        }
+        
+        .theme-image img {
             width: 100%;
             height: auto;
             display: block;
@@ -480,7 +491,7 @@
         
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-content {
+            .about-content, .theme-content {
                 flex-direction: column;
             }
             
@@ -500,25 +511,6 @@
             .footer-links-column {
                 flex: 0 0 50%;
                 margin-bottom: 30px;
-            }
-            
-            .history-timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-item {
-                flex-direction: row !important;
-            }
-            
-            .timeline-item .timeline-content {
-                margin-left: 80px !important;
-                margin-right: 0 !important;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content::before,
-            .timeline-item:nth-child(even) .timeline-content::before {
-                left: -50px;
-                right: auto;
             }
         }
         
@@ -564,6 +556,10 @@
                 font-size: 2rem;
             }
             
+            .tedx-box h3 {
+                font-size: 2rem;
+            }
+            
             .footer-links-column {
                 flex: 0 0 100%;
             }
@@ -594,6 +590,10 @@
             .logo-sub {
                 font-size: 9px;
             }
+            
+            .tedx-box {
+                padding: 40px 20px;
+            }
         }
     </style>
 </head>
@@ -609,8 +609,8 @@
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#history">History</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="#about-ted">About TED</a></li>
+                    <li><a href="#theme">Theme</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -624,67 +624,64 @@
             <h1>TEDx Silveroaks Int School 2025</h1>
             <h2>Maya: Illusions in Daily Life</h2>
             <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
-            <a href="#history" class="btn">Our History</a>
-            <a href="#about" class="btn btn-outline">Learn More</a>
+            <a href="#about-ted" class="btn">About TED</a>
+            <a href="#theme" class="btn btn-outline">Event Theme</a>
         </div>
     </section>
 
-    <!-- History Section -->
-    <section class="history" id="history">
+    <!-- About TED Section -->
+    <section class="about-ted" id="about-ted">
         <div class="container">
             <div class="section-title">
-                <h2>Our History</h2>
-                <p>Discover the journey of TEDxSilveroaks through the years</p>
+                <h2>About TED & TEDx</h2>
+                <p>Learn about the organizations behind our event</p>
             </div>
-            <div class="history-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2023</div>
-                        <h3>The Beginning</h3>
-                        <p>TEDxSilveroaks was born from a vision to create a platform for sharing innovative ideas within our school community. A dedicated team of students and faculty came together to organize our first independent TEDx event.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2024</div>
-                        <h3>First Official Event</h3>
-                        <p>Our inaugural TEDxSilveroaks event took place with the theme "Breaking Barriers". We featured 8 inspiring speakers from various fields who shared their perspectives on overcoming limitations and pushing boundaries.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3>Expanding Horizons</h3>
-                        <p>This year, we explore "Maya: Illusions in Daily Life", delving into the concept of perception versus reality in our modern world. Our event has grown to include workshops, interactive sessions, and a diverse lineup of thought leaders.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">Future</div>
-                        <h3>Continuing the Legacy</h3>
-                        <p>We aim to continue fostering a culture of curiosity and innovation, bringing together bright minds to share ideas that inspire positive change in our community and beyond.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About TEDxSilveroaks</h2>
-                <p>Learn more about our mission and impact</p>
-            </div>
+            
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Our Purpose</h3>
-                    <p>TEDxSilveroaks International School Bachupally is a student-led initiative that brings the spirit of TED's mission to discover "ideas worth spreading" to our local community.</p>
-                    <p>We believe in the power of ideas to change attitudes, lives, and ultimately, the world. Our independently organized TEDx events aim to create a platform where thinkers and doers can share insights that spark deep discussion and connection.</p>
-                    <p>Through our events, we strive to inspire curiosity, foster innovation, and build a community of lifelong learners who are passionate about making a positive impact.</p>
-                    <a href="#contact" class="btn">Get Involved</a>
+                    <h3>About TED</h3>
+                    <p>TED is a nonprofit, nonpartisan organization dedicated to discovering, debating and spreading ideas that spark conversation, deepen understanding and drive meaningful change.</p>
+                    <p>Our organization is devoted to curiosity, reason, wonder and the pursuit of knowledge — without an agenda. We welcome people from every discipline and culture who seek a deeper understanding of the world and connection with others, and we invite everyone to engage with ideas and activate them in your community.</p>
                 </div>
                 <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="TED Conference">
+                </div>
+            </div>
+            
+            <div class="tedx-explanation">
+                <div class="tedx-box">
+                    <h3>About TEDx</h3>
+                    <span class="x-highlight">X = Independently Organized</span>
+                    <p>In the spirit of discovering and spreading ideas, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience.</p>
+                    <p>At a TEDx event, TED Talks video and live speakers combine to spark deep discussion and connection. These local, self-organized events are branded TEDx, where x = independently organized TED event.</p>
+                    <p>The TED Conference provides general guidance for the TEDx program, but individual TEDx events are self-organized.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme Section -->
+    <section class="theme" id="theme">
+        <div class="container">
+            <div class="section-title">
+                <h2>Event Theme</h2>
+                <p>Maya: Illusions in Daily Life</p>
+            </div>
+            <div class="theme-content">
+                <div class="theme-text">
+                    <h3>Maya: The Illusions in Daily Life</h3>
+                    <p>The ancient Sanskrit word "Maya" often translates to "illusion," but it signifies more than mere trickery. It represents the powerful, enchanting force that constructs our perceived reality—the veil that separates us from a fundamental truth.</p>
+                    <p>In this edition of TEDxSilverOaksIntSchoolBachupally, we deconstruct the 'Maya' of the 21st century:</p>
+                    <ul>
+                        <li><strong>The Illusion of Self:</strong> Are our personalities fixed, or fluid constructs?</li>
+                        <li><strong>The Illusion of Time:</strong> Why do we feel so time-poor in an age of efficiency?</li>
+                        <li><strong>The Illusion of Connection:</strong> Is social media bringing us together or building walls?</li>
+                        <li><strong>The Illusion of Certainty:</strong> In a complex world, why do we crave simple answers?</li>
+                    </ul>
+                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
+                    <a href="#contact" class="btn">Get Involved</a>
+                </div>
+                <div class="theme-image">
                     <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="TEDx Event">
                 </div>
             </div>
@@ -714,8 +711,8 @@
                         <h3>Quick Links</h3>
                         <ul>
                             <li><a href="#home">Home</a></li>
-                            <li><a href="#history">History</a></li>
-                            <li><a href="#about">About</a></li>
+                            <li><a href="#about-ted">About TED</a></li>
+                            <li><a href="#theme">Theme</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
