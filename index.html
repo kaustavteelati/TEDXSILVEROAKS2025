@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEDx Silveroaks Int School 2025 - Maya: Illusions in Daily Life</title>
+    <title>TEDx Silveroaks Int School - Year Selection</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -24,8 +24,9 @@
             box-sizing: border-box;
         }
         
-        html {
-            scroll-behavior: smooth;
+        html, body {
+            height: 100%;
+            overflow: hidden;
         }
         
         body {
@@ -33,38 +34,26 @@
             color: var(--secondary);
             background-color: var(--dark);
             line-height: 1.7;
-            overflow-x: hidden;
             font-weight: 400;
         }
         
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Year Selection Popup */
+        /* Year Selection Popup - Full Screen */
         .year-popup {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             opacity: 1;
             transition: opacity 0.5s ease;
+            padding: 20px;
         }
         
         .year-popup.hidden {
@@ -73,43 +62,38 @@
         }
         
         .year-selection {
-            background-color: var(--light);
-            border-radius: 15px;
-            padding: 50px;
             text-align: center;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-            border: 2px solid var(--primary);
-            position: relative;
-            animation: popup-appear 0.5s ease-out;
+            width: 100%;
+            max-width: 1200px;
+            animation: popup-appear 0.8s ease-out;
         }
         
         @keyframes popup-appear {
             0% {
-                transform: scale(0.8);
+                transform: translateY(50px);
                 opacity: 0;
             }
             100% {
-                transform: scale(1);
+                transform: translateY(0);
                 opacity: 1;
             }
         }
         
-        .year-selection h2 {
-            font-size: 2.5rem;
+        .year-selection h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
             color: var(--primary);
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-shadow: 0 5px 15px rgba(230, 46, 46, 0.3);
         }
         
         .year-selection p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+            font-size: 1.3rem;
+            margin-bottom: 60px;
             color: var(--text-light);
-            max-width: 500px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -117,1026 +101,351 @@
         .year-options {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 40px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
         
         .year-option {
             background: var(--gradient);
-            border-radius: 10px;
-            padding: 30px 20px;
+            border-radius: 20px;
+            padding: 50px 30px;
             flex: 1;
-            max-width: 200px;
+            max-width: 500px;
+            min-width: 300px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            box-shadow: 0 10px 20px rgba(230, 46, 46, 0.2);
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+            box-shadow: 0 15px 30px rgba(230, 46, 46, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+        }
+        
+        .year-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            transition: all 0.4s ease;
         }
         
         .year-option:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(230, 46, 46, 0.4);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(230, 46, 46, 0.4);
             border-color: var(--secondary);
         }
         
+        .year-option:hover::before {
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
         .year-option h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .year-option p {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             margin-bottom: 0;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .year-note {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-style: italic;
-            margin-top: 20px;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(230, 46, 46, 0.2);
-        }
-        
-        header.scrolled {
-            background-color: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-        }
-        
-        .logo-main {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 1px;
-        }
-        
-        .logo-sub {
-            font-size: 11px;
-            color: var(--secondary);
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 35px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: var(--secondary);
-            font-weight: 500;
-            font-size: 14px;
-            transition: all 0.3s;
+            color: rgba(255, 255, 255, 0.9);
             position: relative;
-            padding: 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            z-index: 2;
+            max-width: 90%;
         }
         
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
+        .year-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
             color: var(--secondary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--secondary);
-            padding: 200px 0 150px;
-            text-align: center;
             position: relative;
-            overflow: hidden;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease;
         }
         
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
+        .year-option:hover .year-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .year-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+            justify-content: center;
             position: relative;
             z-index: 2;
         }
         
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            font-weight: 800;
-            text-transform: uppercase;
+        .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(5px);
         }
         
-        .hero h2 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            font-weight: 400;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 1px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 50px;
+        .year-note {
+            font-size: 1rem;
             color: var(--text-light);
-            font-weight: 400;
+            font-style: italic;
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .btn {
+        .year-option.active {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.3), 0 25px 50px rgba(230, 46, 46, 0.4);
+            transform: scale(1.05);
+        }
+        
+        /* Selection Animation */
+        .year-option.selected {
+            animation: selection-pulse 0.6s ease-out;
+        }
+        
+        @keyframes selection-pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* Continue Button */
+        .continue-btn {
             display: inline-block;
-            padding: 15px 35px;
+            padding: 18px 50px;
             background: var(--gradient);
             color: var(--secondary);
             text-decoration: none;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 1.2rem;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(230, 46, 46, 0.3);
+            box-shadow: 0 10px 25px rgba(230, 46, 46, 0.3);
             letter-spacing: 1px;
             text-transform: uppercase;
             font-family: 'Montserrat', sans-serif;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease 0.2s;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(230, 46, 46, 0.4);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--secondary);
-            margin-left: 20px;
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary);
-        }
-        
-        /* Mission Section */
-        .mission {
-            padding: 120px 0;
-            background-color: var(--light);
-        }
-        
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-        
-        .mission-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 40px 30px;
-            text-align: center;
-            transition: all 0.3s;
-            border: 1px solid var(--accent);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .mission-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gradient);
-        }
-        
-        .mission-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .mission-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-        
-        .mission-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--secondary);
-            font-weight: 700;
-        }
-        
-        .mission-card p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 120px 0;
-            background-color: var(--dark);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-title p {
-            max-width: 700px;
-            margin: 30px auto 0;
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 400;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            color: var(--primary);
-            font-weight: 700;
-        }
-        
-        .about-text p {
-            margin-bottom: 25px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-        
-        .about-text ul {
-            margin-bottom: 25px;
-            padding-left: 20px;
-        }
-        
-        .about-text ul li {
-            margin-bottom: 12px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-        
-        .about-text ul li strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--accent);
-            transition: transform 0.5s;
-        }
-        
-        .about-image:hover {
-            transform: translateY(-10px);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* Schedule Section */
-        .schedule {
-            padding: 120px 0;
-            background-color: var(--light);
-        }
-        
-        .timeline {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 150px;
-            width: 2px;
-            background: var(--gradient);
-        }
-        
-        .timeline-item {
-            display: flex;
-            margin-bottom: 50px;
-            position: relative;
-        }
-        
-        .timeline-time {
-            flex: 0 0 150px;
-            text-align: right;
-            padding-right: 40px;
-            font-weight: 600;
-            color: var(--primary);
-            font-size: 1rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .timeline-content {
-            flex: 1;
-            padding-left: 40px;
-            position: relative;
-        }
-        
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            left: -8px;
-            top: 5px;
-            box-shadow: 0 0 0 5px rgba(230, 46, 46, 0.2);
-        }
-        
-        .timeline-content h3 {
-            margin-bottom: 15px;
-            color: var(--secondary);
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .timeline-content p {
-            color: var(--text-light);
-            font-weight: 400;
-        }
-        
-        /* Partners Section */
-        .partners {
-            padding: 100px 0;
-            background-color: var(--dark);
-            text-align: center;
-        }
-        
-        .partners-logos {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 50px;
-            margin-top: 50px;
-        }
-        
-        .partner-logo {
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s;
-            background-color: var(--secondary);
-            padding: 15px;
-            border-radius: 8px;
-        }
-        
-        .partner-logo:hover {
-            filter: grayscale(0%);
+        .continue-btn.visible {
             opacity: 1;
-            transform: scale(1.05);
+            transform: translateY(0);
         }
         
-        .partner-logo img {
-            max-height: 100%;
-            max-width: 180px;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 120px 0;
-            background-color: var(--light);
-        }
-        
-        .contact-container {
-            display: flex;
-            gap: 60px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h2 {
-            margin-bottom: 40px;
-            color: var(--primary);
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        
-        .contact-details {
-            margin-bottom: 40px;
-        }
-        
-        .contact-details p {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            color: var(--text-light);
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-        
-        .contact-details i {
-            margin-right: 15px;
-            color: var(--primary);
-            width: 20px;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--secondary);
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid var(--accent);
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            color: var(--secondary);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s;
-            font-weight: 400;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(230, 46, 46, 0.2);
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: var(--secondary);
-            padding: 80px 0 40px;
-            border-top: 1px solid var(--accent);
-        }
-        
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 60px;
-        }
-        
-        .footer-about {
-            flex: 1;
-            margin-right: 40px;
-        }
-        
-        .footer-links {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .footer-links-column h3 {
-            margin-bottom: 25px;
-            color: var(--primary);
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .footer-links-column ul {
-            list-style: none;
-        }
-        
-        .footer-links-column ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links-column ul li a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 1rem;
-            font-weight: 400;
-            font-family: 'Montserrat', sans-serif;
-        }
-        
-        .footer-links-column ul li a:hover {
-            color: var(--primary);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid var(--accent);
-            font-size: 0.9rem;
-            color: #999;
-            font-weight: 400;
-        }
-        
-        .social-links {
-            display: flex;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            margin-right: 15px;
-            color: var(--secondary);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.1rem;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
+        .continue-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(230, 46, 46, 0.5);
         }
         
         /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.6rem;
-            }
-        }
-        
         @media (max-width: 992px) {
-            .about-content, .contact-container {
-                flex-direction: column;
-            }
-            
-            .footer-container {
-                flex-direction: column;
-            }
-            
-            .footer-about {
-                margin-right: 0;
-                margin-bottom: 50px;
-            }
-            
-            .footer-links {
-                flex-wrap: wrap;
-            }
-            
-            .footer-links-column {
-                flex: 0 0 50%;
-                margin-bottom: 30px;
-            }
-            
-            .timeline::before {
-                left: 120px;
-            }
-            
-            .timeline-time {
-                flex: 0 0 120px;
-            }
-            
             .year-options {
                 flex-direction: column;
                 align-items: center;
             }
             
             .year-option {
-                max-width: 300px;
-                width: 100%;
+                max-width: 90%;
+                height: 350px;
+            }
+            
+            .year-selection h1 {
+                font-size: 2.8rem;
             }
         }
         
         @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: rgba(0, 0, 0, 0.95);
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-                border-top: 1px solid var(--accent);
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 15px 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero {
-                padding: 150px 0 100px;
-            }
-            
-            .hero h1 {
+            .year-selection h1 {
                 font-size: 2.2rem;
             }
             
-            .hero h2 {
-                font-size: 1.4rem;
-            }
-            
-            .section-title h2 {
+            .year-option h3 {
                 font-size: 2rem;
             }
             
-            .timeline-item {
-                flex-direction: column;
+            .year-icon {
+                font-size: 3rem;
             }
             
-            .timeline-time {
-                text-align: left;
-                padding-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .timeline-content {
-                padding-left: 20px;
-            }
-            
-            .timeline::before {
-                left: 10px;
-            }
-            
-            .footer-links-column {
-                flex: 0 0 100%;
-            }
-            
-            .year-selection {
+            .year-option {
+                height: 300px;
                 padding: 30px 20px;
-            }
-            
-            .year-selection h2 {
-                font-size: 2rem;
             }
         }
         
         @media (max-width: 576px) {
-            .hero h1 {
+            .year-selection h1 {
                 font-size: 1.8rem;
             }
             
-            .hero h2 {
-                font-size: 1.2rem;
+            .year-selection p {
+                font-size: 1.1rem;
+                margin-bottom: 40px;
             }
             
-            .section-title h2 {
-                font-size: 1.6rem;
+            .year-option {
+                height: 280px;
+                padding: 25px 15px;
             }
             
-            .btn {
-                padding: 12px 25px;
-                font-size: 12px;
-            }
-            
-            .logo-main {
-                font-size: 22px;
-            }
-            
-            .logo-sub {
-                font-size: 9px;
+            .continue-btn {
+                padding: 15px 35px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Year Selection Popup -->
+    <!-- Year Selection Popup - Full Screen -->
     <div class="year-popup" id="yearPopup">
         <div class="year-selection">
-            <h2>Welcome to TEDx Silveroaks</h2>
-            <p>Please select which year's content you would like to explore:</p>
+            <h1>Welcome to TEDx Silveroaks</h1>
+            <p>Select which year's content you'd like to explore. Each year offers unique perspectives and inspiring ideas.</p>
+            
             <div class="year-options">
                 <div class="year-option" id="year1">
+                    <div class="year-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
                     <h3>Year 1</h3>
-                    <p>Explore our inaugural event with groundbreaking talks and inspiring ideas</p>
+                    <p>Our inaugural event with groundbreaking talks and inspiring ideas</p>
+                    <div class="year-highlights">
+                        <span class="highlight">Inaugural Event</span>
+                        <span class="highlight">Foundational Ideas</span>
+                        <span class="highlight">Community Building</span>
+                    </div>
                 </div>
                 <div class="year-option" id="year2">
+                    <div class="year-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
                     <h3>Year 2</h3>
-                    <p>Discover our latest event with new perspectives and thought-provoking discussions</p>
+                    <p>Our latest event with new perspectives and thought-provoking discussions</p>
+                    <div class="year-highlights">
+                        <span class="highlight">Latest Event</span>
+                        <span class="highlight">Expanded Topics</span>
+                        <span class="highlight">Advanced Concepts</span>
+                    </div>
                 </div>
             </div>
-            <p class="year-note">You can change this selection later from the navigation menu</p>
+            
+            <p class="year-note">You can change your selection later from the navigation menu</p>
+            
+            <button class="continue-btn" id="continueBtn">Continue to Website</button>
         </div>
     </div>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-main">TEDx</div>
-                <div class="logo-sub">Silver Oaks Intl School</div>
-                <div class="logo-sub">Bachupally</div>
-            </div>
-            <nav>
-                <ul id="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#mission">Mission</a></li>
-                    <li><a href="#about">Theme</a></li>
-                    <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#partners">Partners</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#" id="changeYear">Change Year</a></li>
-                </ul>
-            </nav>
-            <div class="mobile-menu" id="mobile-menu">☰</div>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>TEDx Silveroaks Int School 2025</h1>
-            <h2>Maya: Illusions in Daily Life</h2>
-            <p>Explore the modern-day 'Maya'—the illusions of our minds, our societies, and our digital lives—to uncover a deeper, more authentic reality.</p>
-            <a href="#contact" class="btn">Get Tickets</a>
-            <a href="#mission" class="btn btn-outline">Learn More</a>
-        </div>
-    </section>
-
-    <!-- Mission Section -->
-    <section class="mission" id="mission">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Mission & Impact</h2>
-                <p>Discover the purpose behind TEDx and the impact we aim to create</p>
-            </div>
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Purpose</h3>
-                    <p>The purpose of TEDx, created in the spirit of TED's overall mission to discover "ideas worth spreading", is to connect bright minds and accomplished individuals to inspire the next generation of thinkers. TEDx is organised locally by passionate individuals to bring local voices forward. These events are branded TEDx, where x = independently organised TED event.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Impact</h3>
-                    <p>TEDx has always been more than just a platform for speeches; it is a space for connection, inspiration and transformation. By convening speakers from various fields, TEDx creates a global forum that puts forth various perspectives on ideas that matter. Moreover, it gives curious young minds an opportunity to interact and learn from leaders in the community.</p>
-                </div>
-                <div class="mission-card">
-                    <div class="mission-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>Theme</h3>
-                    <p>We live in a world that constantly blurs the line between what is real and what only seems real. Maya, drawn from Indian philosophy, explores this very illusion: the deception and magic woven into our everyday lives. From the stories we read and the media we consume, to the technology that shapes our reality, illusion surrounds us.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About The Theme</h2>
-                <p>Delve deeper into the concept of Maya and its relevance to our modern lives</p>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Maya: The Illusions in Daily Life</h3>
-                    <p>The ancient Sanskrit word "Maya" often translates to "illusion," but it signifies more than mere trickery. It represents the powerful, enchanting force that constructs our perceived reality—the veil that separates us from a fundamental truth.</p>
-                    <p>In this edition of TEDxSilverOaksIntSchoolBachupally, we deconstruct the 'Maya' of the 21st century:</p>
-                    <ul>
-                        <li><strong>The Illusion of Self:</strong> Are our personalities fixed, or fluid constructs?</li>
-                        <li><strong>The Illusion of Time:</strong> Why do we feel so time-poor in an age of efficiency?</li>
-                        <li><strong>The Illusion of Connection:</strong> Is social media bringing us together or building walls?</li>
-                        <li><strong>The Illusion of Certainty:</strong> In a complex world, why do we crave simple answers?</li>
-                    </ul>
-                    <p>TEDxSilver Oaks Intl School Bachupally invites speakers to question and reveal what lies beyond appearances, and to help others see through the veil of illusion.</p>
-                    <a href="#contact" class="btn">Register Now</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="TEDx Event">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section class="schedule" id="schedule">
-        <div class="container">
-            <div class="section-title">
-                <h2>Event Schedule</h2>
-                <p>Plan your day with our detailed schedule of talks and activities</p>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-time">9:00 AM - 9:30 AM</div>
-                    <div class="timeline-content">
-                        <h3>Registration & Welcome Coffee</h3>
-                        <p>Check-in and network with fellow attendees</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">9:30 AM - 10:00 AM</div>
-                    <div class="timeline-content">
-                        <h3>Opening Act & Welcome Note</h3>
-                        <p>Kickstarting the event with an inspiring performance</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">10:00 AM - 11:00 AM</div>
-                    <div class="timeline-content">
-                        <h3>Session 1: The Inner Veil</h3>
-                        <p>Exploring the illusions of self and identity</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">11:00 AM - 11:30 AM</div>
-                    <div class="timeline-content">
-                        <h3>Networking Break</h3>
-                        <p>Refreshments and conversations</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">11:30 AM - 12:30 PM</div>
-                    <div class="timeline-content">
-                        <h3>Session 2: The Digital Mirage</h3>
-                        <p>Examining technology's impact on our perception of reality</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">12:30 PM - 1:30 PM</div>
-                    <div class="timeline-content">
-                        <h3>Lunch Break</h3>
-                        <p>Enjoy a curated meal while connecting with speakers</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">1:30 PM - 3:00 PM</div>
-                    <div class="timeline-content">
-                        <h3>Session 3: Beyond the Veil</h3>
-                        <p>Short talks and interactive workshops</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">3:00 PM - 3:30 PM</div>
-                    <div class="timeline-content">
-                        <h3>Closing Remarks & Networking</h3>
-                        <p>Final thoughts and continued conversations</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="partners" id="partners">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Partners</h2>
-                <p>With thanks to our sponsors and community partners</p>
-            </div>
-            <div class="partners-logos">
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+1" alt="Partner 1">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+2" alt="Partner 2">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+3" alt="Partner 3">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/180x70/000000/ffffff?text=Partner+4" alt="Partner 4">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact
+    <script>
+        // DOM elements
+        const yearPopup = document.getElementById('yearPopup');
+        const year1Option = document.getElementById('year1');
+        const year2Option = document.getElementById('year2');
+        const continueBtn = document.getElementById('continueBtn');
+        
+        // Track selected year
+        let selectedYear = null;
+        
+        // Year selection functionality
+        function selectYear(year) {
+            // Reset both options
+            year1Option.classList.remove('active');
+            year2Option.classList.remove('active');
+            
+            // Select the clicked option
+            if (year === 1) {
+                year1Option.classList.add('active');
+                year1Option.classList.add('selected');
+                selectedYear = 1;
+            } else {
+                year2Option.classList.add('active');
+                year2Option.classList.add('selected');
+                selectedYear = 2;
+            }
+            
+            // Show continue button
+            continueBtn.classList.add('visible');
+            
+            // Remove selection animation after it completes
+            setTimeout(() => {
+                year1Option.classList.remove('selected');
+                year2Option.classList.remove('selected');
+            }, 600);
+        }
+        
+        // Event listeners for year selection
+        year1Option.addEventListener('click', () => selectYear(1));
+        year2Option.addEventListener('click', () => selectYear(2));
+        
+        // Continue button functionality
+        continueBtn.addEventListener('click', () => {
+            if (selectedYear === 1) {
+                // Redirect to Year 1 website
+                window.location.href = "year1-website.html";
+            } else if (selectedYear === 2) {
+                // Redirect to Year 2 website (current website)
+                yearPopup.classList.add('hidden');
+                // In a real implementation, you would show the main website content here
+                // For this demo, we'll just show an alert
+                setTimeout(() => {
+                    alert("Redirecting to Year 2 website (current implementation)");
+                }, 500);
+            } else {
+                alert("Please select a year first");
+            }
+        });
+        
+        // Add hover effects for better interactivity
+        year1Option.addEventListener('mouseenter', () => {
+            if (!year1Option.classList.contains('active')) {
+                year1Option.style.transform = 'translateY(-10px) scale(1.02)';
+            }
+        });
+        
+        year1Option.addEventListener('mouseleave', () => {
+            if (!year1Option.classList.contains('active')) {
+                year1Option.style.transform = '';
+            }
+        });
+        
+        year2Option.addEventListener('mouseenter', () => {
+            if (!year2Option.classList.contains('active')) {
+                year2Option.style.transform = 'translateY(-10px) scale(1.02)';
+            }
+        });
+        
+        year2Option.addEventListener('mouseleave', () => {
+            if (!year2Option.classList.contains('active')) {
+                year2Option.style.transform = '';
+            }
+        });
+    </script>
+</body>
+</html>
